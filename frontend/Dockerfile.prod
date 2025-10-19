@@ -1,0 +1,50 @@
+# Production Dockerfile for React Frontend
+# Multi-stage build for optimized production image
+
+# Stage 1: Build the React application
+FROM oven/bun:1-alpine AS builder
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json bun.lockb* ./
+
+# Install dependencies (including dev dependencies for build)
+RUN bun install --frozen-lockfile
+
+# Copy source code
+COPY . .
+
+# Build the application for production
+RUN bun run build
+
+# Stage 2: Production server using Bun
+FROM oven/bun:1-alpine
+
+WORKDIR /app
+
+# Install serve - lightweight production server for static files
+RUN bun add -g serve
+
+# Copy built files from builder stage
+COPY --from=builder /app/dist ./dist
+
+# Create non-root user for security
+RUN addgroup -g 1001 -S bunuser && \
+    adduser -S frontend -u 1001 -G bunuser && \
+    chown -R frontend:bunuser /app
+
+# Switch to non-root user
+USER frontend
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1
+
+# Serve the application
+# -s flag enables SPA mode (all routes serve index.html)
+# -l 3000 sets the port
+CMD ["serve", "-s", "dist", "-l", "3000"]
