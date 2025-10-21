@@ -1,68 +1,158 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/**
+ * Global Styles
+ *
+ * Tailwind CSS imports and global styles.
+ */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Custom global styles */
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
   }
-  a:hover {
-    color: #747bff;
+
+  h1 {
+    @apply text-3xl font-bold;
   }
-  button {
-    background-color: #f9f9f9;
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+
+  h4 {
+    @apply text-lg font-medium;
+  }
+}
+
+/* Custom components */
+@layer components {
+  /* Card component */
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+
+  .card-header {
+    @apply border-b border-gray-200 pb-4 mb-4;
+  }
+
+  /* Button variants */
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500;
+  }
+
+  .btn-success {
+    @apply btn bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+
+  /* Input fields */
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500;
+  }
+
+  .input-error {
+    @apply input border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500;
+  }
+
+  /* Labels */
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  /* Stat card for dashboard metrics */
+  .stat-card {
+    @apply card;
+  }
+
+  .stat-label {
+    @apply text-sm font-medium text-gray-600 mb-1;
+  }
+
+  .stat-value {
+    @apply text-3xl font-bold text-gray-900;
+  }
+
+  .stat-change {
+    @apply text-sm font-medium mt-2;
+  }
+
+  .stat-change-positive {
+    @apply stat-change text-green-600;
+  }
+
+  .stat-change-negative {
+    @apply stat-change text-red-600;
+  }
+
+  /* Badge component */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-green-100 text-green-800;
+  }
+
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-100 text-red-800;
+  }
+
+  .badge-info {
+    @apply badge bg-blue-100 text-blue-800;
+  }
+
+  .badge-gray {
+    @apply badge bg-gray-100 text-gray-800;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply inline-block animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite];
+  }
+
+  .spinner-sm {
+    @apply spinner h-4 w-4;
+  }
+
+  .spinner-md {
+    @apply spinner h-8 w-8;
+  }
+
+  .spinner-lg {
+    @apply spinner h-12 w-12;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }

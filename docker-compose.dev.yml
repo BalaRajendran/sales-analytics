@@ -1,0 +1,22 @@
+# Development override for docker-compose
+# Use this for local development with hot-reload
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  fastapi:
+    # Override command to use uvicorn directly with auto-reload
+    command: >
+      uvicorn src.main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
+      --reload-dir /app/src
+      --reload-dir /app/migrations
+      --log-level debug
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=true
+    volumes:
+      - ./src:/app/src
+      - ./migrations:/app/migrations
+      - ./logs:/app/logs

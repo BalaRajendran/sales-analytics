@@ -21,11 +21,15 @@ dependencies = [
     # Core Framework
     "fastapi>=0.116.1",
     "uvicorn[standard]>=0.35.0",
+    "gunicorn>=21.2.0",
     # Database
     "sqlalchemy>=2.0.41",
     "alembic>=1.16.4",
     "asyncpg>=0.30.0",
     "aiosqlite>=0.21.0",
+    "psycopg2-binary>=2.9.9",
+    # GraphQL
+    "strawberry-graphql[fastapi]>=0.238.0",
     # Authentication and Security
     "python-jose[cryptography]>=3.5.0",
     "passlib[bcrypt]>=1.7.4",
@@ -37,9 +41,19 @@ dependencies = [
     "aiofiles>=24.1.0",
     "pydantic[email]>=2.11.7",
     "pydantic-settings>=2.10.1",
+    # Caching & Background Tasks
+    "redis>=5.0.0",
+    "hiredis>=2.3.0",
+    "celery>=5.3.0",
+    "celery[redis]>=5.3.0",
     # Rate Limiting
     "slowapi>=0.1.9",
-    "redis>=4.5.0,<5.0",
+    # Performance & Serialization
+    "orjson>=3.9.0",
+    "msgpack>=1.0.0",
+    # Monitoring
+    "prometheus-client>=0.19.0",
+    "prometheus-fastapi-instrumentator>=6.1.0",
     # Utilities
     "python-dotenv>=1.1.1",
     "typing-extensions>=4.7.0",
@@ -55,6 +69,7 @@ dev = [
     "pytest-mock>=3.14.1",
     "httpx>=0.28.1",
     "faker>=37.4.2",
+    "locust>=2.15.0",  # Load testing
 ]
 
 test = [

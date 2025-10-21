@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/**
+ * Main App Component
+ *
+ * Routes and layout for the Sales Analytics Dashboard.
+ */
+
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import Dashboard from './pages/Dashboard';
+import Products from './pages/Products';
+import Customers from './pages/Customers';
+import SalesReps from './pages/SalesReps';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/customers" element={<Customers />} />
+        <Route path="/sales-reps" element={<SalesReps />} />
+        <Route
+          path="/analytics"
+          element={
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900 mb-6">Advanced Analytics</h1>
+              <p className="text-gray-600">Analytics coming soon...</p>
+            </div>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900 mb-6">Settings</h1>
+              <p className="text-gray-600">Settings coming soon...</p>
+            </div>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <div>
+              <h1 className="text-2xl font-bold text-red-600 mb-2">404 - Not Found</h1>
+              <p className="text-gray-600">The page you're looking for doesn't exist.</p>
+            </div>
+          }
+        />
+      </Routes>
+    </Layout>
+  );
 }
 
-export default App
+export default App;

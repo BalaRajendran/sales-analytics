@@ -7,8 +7,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.api.v1 import api_router
+from src.core.cache import cache_manager
 from src.core.config import settings
 from src.core.exception_handlers import register_exception_handlers
+from src.graphql import graphql_router
 from src.middleware.rate_limiting import RateLimitMiddleware
 from src.schemas.common import ApiResponse, HealthResponse
 
@@ -18,9 +20,26 @@ async def lifespan(app: FastAPI):
     """Application lifespan manager."""
     # Startup
     print("Starting Sales Dashboard API...")
+
+    # Initialize cache manager
+    try:
+        await cache_manager.connect()
+        print("✓ Redis cache connected successfully")
+    except Exception as e:
+        print(f"⚠ Warning: Failed to connect to Redis cache: {e}")
+        print("  Application will continue without caching")
+
     yield
+
     # Shutdown
     print("Shutting down Sales Dashboard API...")
+
+    # Disconnect cache manager
+    try:
+        await cache_manager.disconnect()
+        print("✓ Redis cache disconnected")
+    except Exception as e:
+        print(f"⚠ Warning: Error disconnecting Redis cache: {e}")
 
 
 def create_app() -> FastAPI:
@@ -54,6 +73,9 @@ def create_app() -> FastAPI:
     # Include API router
     app.include_router(api_router, prefix=settings.API_V1_PREFIX)
 
+    # Include GraphQL router
+    app.include_router(graphql_router, prefix="/graphql", tags=["GraphQL"])
+
     # Health check endpoint
     @app.get("/health", response_model=ApiResponse[HealthResponse], tags=["Health"])
     async def health_check():
@@ -63,6 +85,17 @@ def create_app() -> FastAPI:
         Returns the current status and version of the API.
         This endpoint is exempt from rate limiting.
         """
+        # Check cache connectivity
+        cache_connected = False
+        try:
+            cache_connected = await cache_manager.exists("health_check_test")
+            if not cache_connected:
+                # Try to set a test key
+                await cache_manager.set("health_check_test", "ok", ttl=10)
+                cache_connected = True
+        except Exception:
+            cache_connected = False
+
         health_data = HealthResponse(
             status="ok",
             version=settings.VERSION,

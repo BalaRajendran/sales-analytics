@@ -1,407 +1,500 @@
-# Documentation Index
+# ShopX Sales Analytics Dashboard - Documentation Index
 
-Complete documentation for the URL Shortener project.
+Complete documentation for the high-performance sales analytics dashboard.
 
 ## 📚 Documentation Structure
 
 ```
 docs/
-├── README.md                           # This file
-├── QUICKSTART.md                       # 5-minute setup guide
-├── api/
-│   └── API_REFERENCE.md               # Complete API documentation
-├── development/
+├── README.md                           # This file - Documentation index
+├── PROJECT_OVERVIEW.md                 # Visual project structure overview
+├── DOCS_MAP.md                         # Quick reference map
+│
+├── Core Documentation (Sales Analytics Dashboard)
+├── REQUIREMENT.md                      # Original requirements and specifications
+├── ARCHITECTURE.md                     # Complete system architecture
+├── API.md                              # GraphQL API documentation
+├── IMPLEMENTATION_GUIDE.md             # Step-by-step implementation guide
+│
+├── development/                        # Development Guides
 │   ├── SETUP_GUIDE.md                 # Development environment setup
-│   └── TESTING_GUIDE.md               # Testing practices and guide
-├── deployment/
-│   └── DEPLOYMENT_GUIDE.md            # Production deployment guide
-└── architecture/
-    └── ARCHITECTURE.md                # System architecture overview
+│   └── TESTING_GUIDE.md               # Testing guide
+│
+└── deployment/                         # Deployment Guides
+    ├── DEPLOYMENT_GUIDE.md            # Production deployment
+    └── EC2_DOCKER_DEPLOYMENT.md       # Docker deployment to EC2
 ```
 
-## 🚀 Getting Started
+---
 
-### New to the Project?
+## 🚀 Quick Navigation
 
-1. **Start Here**: [QUICKSTART.md](QUICKSTART.md)
-   - 5-minute setup guide
-   - Get the application running locally
-   - Test the API
+### New to the Sales Analytics Dashboard?
 
-2. **Development Setup**: [development/SETUP_GUIDE.md](development/SETUP_GUIDE.md)
-   - Detailed environment setup
-   - IDE configuration
-   - Development tools
+**Follow this order:**
 
-3. **API Documentation**: [api/API_REFERENCE.md](api/API_REFERENCE.md)
-   - Complete API reference
-   - Request/response examples
-   - Error handling
-
-## 📖 Documentation by Role
+1. **[REQUIREMENT.md](REQUIREMENT.md)** - Understand what we're building
+2. **[ARCHITECTURE.md](ARCHITECTURE.md)** - Learn the system design
+3. **[IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)** - Implementation steps
+4. **[API.md](API.md)** - GraphQL API reference
 
 ### For Developers
 
-**Getting Started:**
-- [Quick Start Guide](QUICKSTART.md) - Set up in 5 minutes
-- [Development Setup](development/SETUP_GUIDE.md) - Complete setup guide
-- [Testing Guide](development/TESTING_GUIDE.md) - Write and run tests
+#### Getting Started
+- 📖 [REQUIREMENT.md](REQUIREMENT.md) - Project requirements
+- 🏗️ [ARCHITECTURE.md](ARCHITECTURE.md) - System architecture (read this first!)
+- 🚀 [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) - Build step-by-step
+- 🔌 [API.md](API.md) - GraphQL schema and queries
 
-**Technical Details:**
-- [Architecture Overview](architecture/ARCHITECTURE.md) - System design
-- [API Reference](api/API_REFERENCE.md) - API endpoints
-- [Code Conventions](../.claude/conventions.md) - Coding standards
-
-**Project Context:**
-- [Project Knowledge](../.claude/project_knowledge.md) - Project overview
-- [Backend README](../backend/README.md) - Backend-specific docs
+#### Development Setup
+- 🛠️ [development/SETUP_GUIDE.md](development/SETUP_GUIDE.md) - Detailed setup
+- 🧪 [development/TESTING_GUIDE.md](development/TESTING_GUIDE.md) - Testing guide
 
 ### For DevOps/SRE
 
-- [Deployment Guide](deployment/DEPLOYMENT_GUIDE.md) - Deploy to production
-- [Architecture Overview](architecture/ARCHITECTURE.md) - System architecture
-- [Backend README](../backend/README.md) - Configuration details
+- 🚢 [deployment/DEPLOYMENT_GUIDE.md](deployment/DEPLOYMENT_GUIDE.md) - Production deployment
+- 🐳 [deployment/EC2_DOCKER_DEPLOYMENT.md](deployment/EC2_DOCKER_DEPLOYMENT.md) - Docker deployment
+- 🏗️ [ARCHITECTURE.md](ARCHITECTURE.md) - Architecture overview
+- 📊 [Main README](../README.md) - Configuration and monitoring
 
 ### For API Consumers
 
-- [API Reference](api/API_REFERENCE.md) - Complete API documentation
-- [Quick Start](QUICKSTART.md) - Test the API quickly
-- Interactive Docs: http://localhost:8000/api/v1/docs (when running)
+- 🔌 [API.md](API.md) - Complete GraphQL API documentation
+- 📖 Example queries and mutations
+- 🎮 GraphQL Playground: http://localhost:8000/graphql (when running)
+- 📚 OpenAPI/Swagger: http://localhost:8000/docs (REST endpoints)
 
-## 📋 Documentation by Task
+---
 
-### Setting Up Development Environment
+## 📋 Core Documentation Files
 
-1. [QUICKSTART.md](QUICKSTART.md) - Basic setup
-2. [development/SETUP_GUIDE.md](development/SETUP_GUIDE.md) - Complete setup
-3. [Code Conventions](../.claude/conventions.md) - Code style guide
-
-### Writing Code
-
-1. [architecture/ARCHITECTURE.md](architecture/ARCHITECTURE.md) - Understand the system
-2. [Code Conventions](../.claude/conventions.md) - Follow standards
-3. [development/TESTING_GUIDE.md](development/TESTING_GUIDE.md) - Test your code
-
-### Testing
-
-1. [development/TESTING_GUIDE.md](development/TESTING_GUIDE.md) - Complete testing guide
-2. [Backend README](../backend/README.md) - Run tests
-
-### Deploying
-
-1. [deployment/DEPLOYMENT_GUIDE.md](deployment/DEPLOYMENT_GUIDE.md) - Deploy to production
-2. [Backend README](../backend/README.md) - Configuration reference
-
-### Using the API
-
-1. [API Reference](api/API_REFERENCE.md) - Complete API docs
-2. Interactive Docs: http://localhost:8000/api/v1/docs
-3. [QUICKSTART.md](QUICKSTART.md) - Quick examples
-
-## 📑 Core Documentation Files
-
-### [QUICKSTART.md](QUICKSTART.md)
-Get started in 5 minutes. Perfect for first-time setup.
+### 🎯 [REQUIREMENT.md](REQUIREMENT.md)
+**Start here!** Original project requirements for ShopX Sales Analytics Dashboard.
 
 **Contents:**
-- Install prerequisites
-- Backend setup
-- Frontend setup
-- Test the API
-- Troubleshooting
+- Business requirements
+- Data models (Customers, Products, Orders, etc.)
+- Analytics requirements (Sales Overview, Product Insights, Customer Analytics)
+- Dashboard visualizations
+- Performance expectations
 
-### [api/API_REFERENCE.md](api/API_REFERENCE.md)
-Complete API documentation with examples.
-
-**Contents:**
-- All endpoints documented
-- Standardized response format
-- Request/response schemas
-- Error handling with error codes
-- Code examples (Python, JavaScript, cURL)
-- Rate limiting headers
-- Validation requirements
-
-### [api/RATE_LIMITING.md](api/RATE_LIMITING.md)
-Comprehensive rate limiting documentation.
+### 🏗️ [ARCHITECTURE.md](ARCHITECTURE.md) ⭐ **Most Important**
+**Complete system architecture** - The blueprint for the entire system.
 
 **Contents:**
-- Rate limit configuration
-- Per-endpoint limits
-- Rate limit headers
-- Error responses (429 Too Many Requests)
-- Client identification
-- Sliding window algorithm
-- Testing and troubleshooting
+- High-level architecture diagram
+- Multi-tier caching strategy ("highway lanes")
+- Database schema with all tables
+- Indexes, partitioning, materialized views
+- GraphQL API design patterns
+- Frontend architecture
+- Performance optimization techniques
+- Scalability strategies
+- Monitoring and security
+- Performance targets and benchmarks
 
-### [api/VALIDATION.md](api/VALIDATION.md)
-Complete input validation documentation.
+**Why read this?**
+- Understand the "highway-like" performance design
+- Learn the 3-tier caching strategy
+- See how we handle huge traffic
+- Know why decisions were made
 
-**Contents:**
-- URL validation rules
-- Custom code requirements
-- Tags validation
-- Security checks (XSS, path traversal)
-- Error response formats
-- Client-side validation examples
-- Testing validation
-
-### [api/ERROR_CODES.md](api/ERROR_CODES.md)
-Complete error codes reference.
+### 📖 [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) ⭐ **Implementation Roadmap**
+**Step-by-step guide** to implement the entire system.
 
 **Contents:**
-- All error codes and descriptions
-- HTTP status code mapping
-- Error response examples
-- Client-side error handling patterns
-- Retry strategies
-- Best practices for error handling
+- 10 phases of implementation (14 days)
+- Phase 1: Foundation (dependencies, config)
+- Phase 2: Database layer (models, migrations)
+- Phase 3: Caching (Redis)
+- Phase 4: GraphQL API
+- Phase 5: Analytics services
+- Phase 6: Background tasks (Celery)
+- Phase 7: Frontend (React + Apollo)
+- Phase 8: Testing
+- Phase 9: Deployment
+- Complete file paths for all components
+- SQL migration scripts
+- Code examples
 
-### [development/SETUP_GUIDE.md](development/SETUP_GUIDE.md)
-Comprehensive development environment setup.
+**47 new files to create + 7 files to modify**
 
-**Contents:**
-- Prerequisites
-- Backend setup
-- Frontend setup
-- Development tools
-- Database setup
-- IDE configuration
-- Troubleshooting
-
-### [development/TESTING_GUIDE.md](development/TESTING_GUIDE.md)
-Complete guide for writing and running tests.
+### 🔌 [API.md](API.md) ⭐ **GraphQL API Reference**
+**Complete GraphQL API documentation** with schema and examples.
 
 **Contents:**
-- Testing philosophy
-- Running tests
-- Writing tests
-- Fixtures
-- Integration tests
-- Unit tests
-- Mocking
+- Full GraphQL schema definitions
+- All types, enums, inputs
+- Query resolvers:
+  - Sales overview and trends
+  - Product analytics
+  - Customer analytics
+  - Profitability metrics
+  - Sales rep performance
+- Example queries for every feature
+- Response times and caching strategies
+- Error handling
+- Rate limiting
 - Best practices
 
-### [deployment/DEPLOYMENT_GUIDE.md](deployment/DEPLOYMENT_GUIDE.md)
-Production deployment guide.
+**Example queries included:**
+- Dashboard overview
+- Sales trends
+- Product deep dive
+- Customer analytics
+- Profitability analysis
+- Sales rep leaderboard
 
-**Contents:**
-- Pre-deployment checklist
-- Environment configuration
-- Database setup
-- Docker deployment
-- Traditional server deployment
-- Cloud platform deployment
-- Monitoring & logging
-- Backup strategy
-- Security hardening
-- Scaling
+---
 
-### [architecture/ARCHITECTURE.md](architecture/ARCHITECTURE.md)
-System architecture and design decisions.
+## 📊 Documentation by Feature
 
-**Contents:**
-- System architecture
-- Backend architecture
-- Design patterns
-- Data flow
-- Database design
-- Async architecture
-- API versioning
-- Security considerations
-- Scalability
-- Technology choices
+### Sales Analytics
 
-## 🔧 Project Configuration
+**Core Documents:**
+- [REQUIREMENT.md](REQUIREMENT.md#sales-overview) - Requirements
+- [ARCHITECTURE.md](ARCHITECTURE.md#analytics-types) - Design
+- [API.md](API.md#sales-overview--trends) - GraphQL queries
 
-### Claude AI Context Files
+**Implementation:**
+- [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#phase-5-analytics-services) - Service layer
 
-Located in `.claude/`:
-- [project_knowledge.md](../.claude/project_knowledge.md) - Project overview
-- [conventions.md](../.claude/conventions.md) - Code conventions
+### Product Insights
 
-### Backend Documentation
+**Core Documents:**
+- [REQUIREMENT.md](REQUIREMENT.md#product-insights) - Requirements
+- [ARCHITECTURE.md](ARCHITECTURE.md#product-analytics) - Design
+- [API.md](API.md#product-analytics) - GraphQL queries
 
-- [backend/README.md](../backend/README.md) - Backend-specific docs
-- [backend/pyproject.toml](../backend/pyproject.toml) - Dependencies
+### Customer Analytics
 
-### Frontend Documentation
+**Core Documents:**
+- [REQUIREMENT.md](REQUIREMENT.md#customer-analytics) - Requirements
+- [ARCHITECTURE.md](ARCHITECTURE.md#customer-analytics) - Design
+- [API.md](API.md#customer-analytics) - GraphQL queries
 
-- [frontend/README.md](../frontend/README.md) - Frontend-specific docs
-- [frontend/package.json](../frontend/package.json) - Dependencies
+### Database Design
 
-## 🎯 Common Tasks
+**Core Documents:**
+- [ARCHITECTURE.md](ARCHITECTURE.md#database-schema) - Complete schema
+- [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#phase-2-database-layer) - Implementation
+
+**Database Optimizations:**
+- Indexes: `migrations/versions/001_create_indexes.sql`
+- Partitioning: `migrations/versions/002_partition_orders.sql`
+- Materialized Views: `migrations/versions/003_materialized_views.sql`
+
+### Caching Strategy
+
+**Core Documents:**
+- [ARCHITECTURE.md](ARCHITECTURE.md#caching-strategy) - Multi-tier caching
+- [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#phase-3-caching-layer) - Redis setup
+
+**Cache Layers:**
+1. L1 (Redis): 30-60s TTL for hot data
+2. L2 (Materialized Views): Complex aggregations
+3. L3 (Aggregation Tables): Pre-computed metrics
+
+### Frontend Dashboard
+
+**Core Documents:**
+- [ARCHITECTURE.md](ARCHITECTURE.md#frontend-architecture) - Component design
+- [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#phase-7-frontend-dashboard) - React + Apollo
+
+**Components:**
+- Dashboard.tsx - Main container
+- SalesOverview.tsx - Revenue metrics
+- ProductInsights.tsx - Product charts
+- CustomerAnalytics.tsx - Customer metrics
+
+---
+
+## 🎯 Common Tasks & Quick Links
 
 ### First Time Setup
 
 ```bash
-# See: QUICKSTART.md for detailed steps
-make dev  # Install dependencies
-make migration  # Create initial migration
-make migrate  # Apply migrations
-make run  # Start server
+# See: IMPLEMENTATION_GUIDE.md Phase 1
+pip install -e ".[dev]"
+cp .env.example .env
+# Edit .env with your settings
+```
+
+### Database Setup
+
+```bash
+# See: IMPLEMENTATION_GUIDE.md Phase 2
+alembic upgrade head
+psql $DATABASE_URL < migrations/versions/001_create_indexes.sql
+psql $DATABASE_URL < migrations/versions/002_partition_orders.sql
+psql $DATABASE_URL < migrations/versions/003_materialized_views.sql
 ```
 
 ### Running the Application
 
 ```bash
 # Backend
-make run
+uvicorn src.main:app --reload
 
 # Frontend
-cd frontend && bun run dev
+cd frontend && npm run dev
 ```
 
-### Running Tests
+### Testing
 
 ```bash
 # See: development/TESTING_GUIDE.md
-make test
+pytest
+pytest --cov=src --cov-report=html
+locust -f tests/performance/locustfile.py
 ```
 
 ### Deploying
 
 ```bash
 # See: deployment/DEPLOYMENT_GUIDE.md
-# Docker production deployment
-make prod-up
+docker-compose -f docker-compose.prod.yml up -d
 ```
 
-### API Usage
+### Using GraphQL API
 
-```bash
-# See: api/API_REFERENCE.md
-curl -X POST http://localhost:8000/api/v1/urls/ \
-  -H "Content-Type: application/json" \
-  -d '{"url": "https://example.com"}'
+```graphql
+# See: API.md for all queries
+query DashboardOverview {
+  salesOverview(period: MONTH) {
+    totalRevenue
+    totalOrders
+    averageOrderValue
+    revenueChangePercentage
+  }
+}
 ```
+
+Visit GraphQL Playground: http://localhost:8000/graphql
+
+---
 
 ## 🔍 Finding Information
 
 ### By Technology
 
-- **FastAPI**: [Architecture](architecture/ARCHITECTURE.md), [Setup Guide](development/SETUP_GUIDE.md)
-- **SQLAlchemy**: [Architecture](architecture/ARCHITECTURE.md), [Backend README](../backend/README.md)
-- **uv**: [Setup Guide](development/SETUP_GUIDE.md), [QUICKSTART](QUICKSTART.md)
-- **React**: [Frontend README](../frontend/README.md)
-- **Testing**: [Testing Guide](development/TESTING_GUIDE.md)
-- **Deployment**: [Deployment Guide](deployment/DEPLOYMENT_GUIDE.md)
+- **GraphQL/Strawberry**: [ARCHITECTURE.md](ARCHITECTURE.md#graphql-api-design), [API.md](API.md)
+- **PostgreSQL**: [ARCHITECTURE.md](ARCHITECTURE.md#database-schema), [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#phase-2-database-layer)
+- **Redis**: [ARCHITECTURE.md](ARCHITECTURE.md#caching-strategy), [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#phase-3-caching-layer)
+- **Celery**: [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#phase-6-background-tasks)
+- **React**: [ARCHITECTURE.md](ARCHITECTURE.md#frontend-architecture)
+- **FastAPI**: [architecture/ARCHITECTURE.md](architecture/ARCHITECTURE.md)
 
-### By Feature
+### By Performance Topic
 
-- **URL Shortening**: [API Reference](api/API_REFERENCE.md), [Architecture](architecture/ARCHITECTURE.md)
-- **Custom Codes**: [API Reference](api/API_REFERENCE.md), [Validation](api/VALIDATION.md)
-- **Click Tracking**: [Architecture](architecture/ARCHITECTURE.md)
-- **Database Migrations**: [Setup Guide](development/SETUP_GUIDE.md), [Backend README](../backend/README.md)
-- **Rate Limiting**: [Rate Limiting Guide](api/RATE_LIMITING.md)
-- **Input Validation**: [Validation Guide](api/VALIDATION.md)
+- **Caching**: [ARCHITECTURE.md](ARCHITECTURE.md#caching-strategy)
+- **Database Optimization**: [ARCHITECTURE.md](ARCHITECTURE.md#database-optimizations)
+- **Query Performance**: [ARCHITECTURE.md](ARCHITECTURE.md#query-optimization)
+- **Scalability**: [ARCHITECTURE.md](ARCHITECTURE.md#scalability-considerations)
+- **Monitoring**: [ARCHITECTURE.md](ARCHITECTURE.md#monitoring--observability)
+
+### By Task
+
+- **Setup Development**: [QUICKSTART.md](QUICKSTART.md), [development/SETUP_GUIDE.md](development/SETUP_GUIDE.md)
+- **Create Models**: [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#step-21-create-database-models)
+- **Write GraphQL Queries**: [API.md](API.md#example-queries)
+- **Optimize Performance**: [ARCHITECTURE.md](ARCHITECTURE.md#performance-optimization)
+- **Deploy to Production**: [deployment/DEPLOYMENT_GUIDE.md](deployment/DEPLOYMENT_GUIDE.md)
+
+---
+
+## 📈 Implementation Progress Tracking
+
+Use this checklist as you implement the dashboard:
+
+### Phase 1: Foundation ✅
+- [x] Dependencies updated (pyproject.toml)
+- [x] Environment configured (.env.example)
+- [ ] Configuration classes updated
+
+### Phase 2: Database Layer
+- [ ] Models created (Customer, Product, Order, etc.)
+- [ ] Migrations created
+- [ ] Indexes applied
+- [ ] Partitioning setup
+- [ ] Materialized views created
+
+### Phase 3: Caching Layer
+- [ ] Redis cache manager
+- [ ] Cache invalidation logic
+- [ ] TTL configuration
+
+### Phase 4: GraphQL API
+- [ ] Types defined
+- [ ] Queries implemented
+- [ ] DataLoaders created
+- [ ] Complexity analysis
+
+### Phase 5: Analytics Services
+- [ ] Analytics service
+- [ ] Product service
+- [ ] Customer service
+- [ ] Order service
+
+### Phase 6: Background Tasks
+- [ ] Celery configured
+- [ ] Task scheduler
+- [ ] Materialized view refresh
+
+### Phase 7: Frontend
+- [ ] Apollo Client setup
+- [ ] Dashboard components
+- [ ] Chart components
+- [ ] GraphQL queries
+
+### Phase 8: Testing
+- [ ] Unit tests
+- [ ] Integration tests
+- [ ] Performance tests
+
+### Phase 9: Deployment
+- [ ] Docker configuration
+- [ ] Nginx setup
+- [ ] Monitoring configured
+
+See [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) for detailed checklists.
+
+---
 
 ## 📊 Documentation Status
 
-| Document | Status | Last Updated |
-|----------|--------|--------------|
-| QUICKSTART.md | ✅ Complete | 2025-10-12 |
-| API_REFERENCE.md | ✅ Complete | 2025-10-12 |
-| ERROR_CODES.md | ✅ Complete | 2025-10-12 |
-| RATE_LIMITING.md | ✅ Complete | 2025-10-12 |
-| VALIDATION.md | ✅ Complete | 2025-10-12 |
-| SETUP_GUIDE.md | ✅ Complete | 2025-10-12 |
-| TESTING_GUIDE.md | ✅ Complete | 2025-10-12 |
-| DEPLOYMENT_GUIDE.md | ✅ Complete | 2025-10-12 |
-| ARCHITECTURE.md | ✅ Complete | 2025-10-12 |
-| project_knowledge.md | ✅ Complete | 2025-10-12 |
-| conventions.md | ✅ Complete | 2025-10-12 |
+| Document | Type | Status | Description |
+|----------|------|--------|-------------|
+| **README.md** | Navigation | ✅ Complete | Documentation index |
+| **PROJECT_OVERVIEW.md** | Navigation | ✅ Complete | Project structure overview |
+| **DOCS_MAP.md** | Navigation | ✅ Complete | Quick reference map |
+| **REQUIREMENT.md** | Core | ✅ Complete | Project requirements |
+| **ARCHITECTURE.md** | Core | ✅ Complete | System architecture |
+| **API.md** | Core | ✅ Complete | GraphQL API docs |
+| **IMPLEMENTATION_GUIDE.md** | Core | ✅ Complete | Implementation guide |
+| development/SETUP_GUIDE.md | Development | ✅ Complete | Dev setup |
+| development/TESTING_GUIDE.md | Development | ✅ Complete | Testing guide |
+| deployment/DEPLOYMENT_GUIDE.md | Deployment | ✅ Complete | Deployment guide |
+| deployment/EC2_DOCKER_DEPLOYMENT.md | Deployment | ✅ Complete | Docker on AWS |
 
-## 🤝 Contributing to Documentation
+**Legend:**
+- ✅ Complete - Ready to use and up-to-date
+- 🚧 In Progress - Being updated
 
-When adding new features or making changes:
-
-1. **Update relevant docs** - Keep documentation in sync with code
-2. **Follow the structure** - Place docs in appropriate folders
-3. **Use examples** - Include code examples where helpful
-4. **Keep it current** - Update "Last Updated" dates
-5. **Link related docs** - Cross-reference related documentation
-
-### Documentation Style Guide
-
-- Use clear, concise language
-- Include code examples
-- Add screenshots where helpful
-- Use tables for comparisons
-- Include troubleshooting sections
-- Link to external resources
-
-## 📝 Document Templates
-
-### API Endpoint Documentation
-
-```markdown
-### Endpoint Name
-
-Description of what the endpoint does.
-
-**Endpoint:** `METHOD /path`
-
-**Request Body:**
-\`\`\`json
-{
-  "field": "value"
-}
-\`\`\`
-
-**Success Response (200 OK):**
-\`\`\`json
-{
-  "result": "value"
-}
-\`\`\`
-
-**Example:**
-\`\`\`bash
-curl -X METHOD http://localhost:8000/path
-\`\`\`
-```
-
-### Feature Documentation
-
-```markdown
-# Feature Name
-
-## Overview
-Brief description of the feature.
-
-## Usage
-How to use the feature.
-
-## Configuration
-Configuration options.
-
-## Examples
-Code examples.
-
-## Troubleshooting
-Common issues and solutions.
-```
+---
 
 ## 🔗 External Resources
 
+### GraphQL
+- [Strawberry GraphQL Documentation](https://strawberry.rocks/)
+- [GraphQL Best Practices](https://graphql.org/learn/best-practices/)
+
+### FastAPI & Python
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [SQLAlchemy Documentation](https://docs.sqlalchemy.org/)
-- [Pydantic Documentation](https://docs.pydantic.dev/)
+- [Celery Documentation](https://docs.celeryq.dev/)
+
+### Database
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [PostgreSQL Performance Tuning](https://wiki.postgresql.org/wiki/Performance_Optimization)
+
+### Frontend
 - [React Documentation](https://react.dev/)
-- [uv Documentation](https://github.com/astral-sh/uv)
+- [Apollo Client Documentation](https://www.apollographql.com/docs/react/)
+- [Chart.js Documentation](https://www.chartjs.org/)
+
+### Monitoring
+- [Prometheus Documentation](https://prometheus.io/docs/)
+- [Grafana Documentation](https://grafana.com/docs/)
+
+---
+
+## 🤝 Contributing to Documentation
+
+When adding features or making changes:
+
+1. **Update relevant docs** - Keep docs in sync with code
+2. **Follow the structure** - Place docs appropriately
+3. **Use examples** - Include code examples
+4. **Cross-reference** - Link related documentation
+5. **Update status** - Mark completion in tracking tables
+
+### Documentation Style Guide
+
+- ✅ Use clear, concise language
+- ✅ Include practical examples
+- ✅ Add diagrams where helpful
+- ✅ Use tables for comparisons
+- ✅ Include troubleshooting sections
+- ✅ Link to code files with line numbers
+
+---
 
 ## 💡 Need Help?
 
-1. **Check the docs** - Most answers are here
-2. **Interactive API docs** - http://localhost:8000/api/v1/docs
-3. **GitHub Issues** - Report bugs or request features
-4. **Review code** - Source code has inline documentation
+### Documentation Issues
 
-## 📞 Support
+1. **Can't find what you need?** - Use the "Finding Information" section above
+2. **Documentation unclear?** - Open an issue with suggestions
+3. **Found outdated content?** - Please report or submit a PR
 
-For questions or issues:
-- Check [Troubleshooting](development/SETUP_GUIDE.md#troubleshooting) sections
-- Review [FAQ](QUICKSTART.md#troubleshooting) in Quick Start
-- Open a GitHub Issue
-- Check project README files
+### Technical Help
+
+1. **Architecture questions** → [ARCHITECTURE.md](ARCHITECTURE.md)
+2. **Implementation questions** → [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)
+3. **API questions** → [API.md](API.md)
+4. **Setup issues** → [development/SETUP_GUIDE.md](development/SETUP_GUIDE.md)
+5. **Performance questions** → [ARCHITECTURE.md](ARCHITECTURE.md#performance-optimization)
+
+### Quick Links
+
+- 📖 [Main Project README](../README.md)
+- 🔌 [GraphQL Playground](http://localhost:8000/graphql) (when running)
+- 📚 [OpenAPI Docs](http://localhost:8000/docs) (when running)
+- 🐛 [GitHub Issues](../../issues)
+
+---
+
+## 🎓 Learning Path
+
+### For New Developers
+
+**Week 1 - Understanding:**
+1. Read [REQUIREMENT.md](REQUIREMENT.md) - Know what we're building
+2. Read [ARCHITECTURE.md](ARCHITECTURE.md) - Understand the design
+3. Read [API.md](API.md) - Learn the GraphQL API
+
+**Week 2 - Setup:**
+4. Follow [QUICKSTART.md](QUICKSTART.md) - Get it running
+5. Review [development/SETUP_GUIDE.md](development/SETUP_GUIDE.md) - Dev environment
+6. Explore GraphQL Playground - Test queries
+
+**Week 3 - Implementation:**
+7. Follow [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) Phase 1-3
+8. Create database models
+9. Implement caching
+
+**Week 4 - Advanced:**
+10. Implement GraphQL layer (Phase 4-5)
+11. Write tests (Phase 8)
+12. Review performance optimizations
+
+### For Experienced Developers
+
+**Day 1:**
+- Skim [ARCHITECTURE.md](ARCHITECTURE.md) - High-level overview
+- Read [API.md](API.md) - API contracts
+
+**Day 2-3:**
+- Follow [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)
+- Implement Phases 1-5
+
+**Day 4:**
+- Complete Phases 6-9
+- Deploy and test
+
+---
+
+**Last Updated:** 2025-10-20
+**Documentation Version:** 1.0.0
+**Project Status:** Implementation Phase

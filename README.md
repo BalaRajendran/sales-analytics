@@ -1,330 +1,446 @@
-# Sales Dashboard API - FastAPI Template
-
-A modern, production-ready FastAPI template for building sales analytics dashboards and APIs. This project provides a clean architecture with best practices, ready for you to build your sales dashboard APIs from scratch.
-
-## 🎯 Purpose
-
-This is a **template project** with established patterns and infrastructure. The URL shortener example has been replaced with generic templates. You can reuse the code patterns to build your sales dashboard APIs.
-
-📖 **New here?** Check out the **[TEMPLATE_GUIDE.md](TEMPLATE_GUIDE.md)** for a complete step-by-step walkthrough of building your first sales API!
-
-## Project Structure
-
-```
-sales-dashboard-api/
-├── .claude/                # Claude AI project context
-├── docs/                   # 📚 Complete documentation
-│   ├── QUICKSTART.md                # 5-minute setup guide
-│   ├── api/                         # API documentation
-│   ├── development/                 # Development guides
-│   ├── deployment/                  # Deployment guides
-│   └── architecture/                # Architecture docs
-├── src/                    # Backend source code
-│   ├── api/                         # API endpoints
-│   │   └── v1/
-│   │       └── endpoints/           # API route handlers
-│   │           └── example_endpoints.py  # Template endpoint file
-│   ├── core/                        # Configuration & database
-│   │   ├── config.py                # Application settings
-│   │   ├── database.py              # Database setup
-│   │   ├── exceptions.py            # Custom exceptions
-│   │   └── exception_handlers.py   # Exception handlers
-│   ├── models/                      # Database models (SQLAlchemy)
-│   │   └── example_model.py        # Template model file
-│   ├── schemas/                     # Pydantic schemas
-│   │   ├── common.py                # Shared schemas
-│   │   └── example_schema.py       # Template schema file
-│   ├── services/                    # Business logic
-│   │   └── example_service.py      # Template service file
-│   └── middleware/                  # Custom middleware
-├── tests/                  # Backend tests
-│   ├── unit/                        # Unit tests
-│   └── integration/                 # Integration tests
-├── migrations/             # Database migrations (Alembic)
-├── scripts/                # Utility scripts
-├── frontend/               # React + Vite frontend
-├── pyproject.toml          # Python dependencies
-├── alembic.ini             # Alembic configuration
-├── Makefile                # Development commands
-└── README.md               # This file
-```
-
-## ✨ Features & Patterns
-
-This template includes:
-
-- ✅ **Clean Architecture**: Layered design (API → Service → Model)
-- ✅ **FastAPI Best Practices**: Async/await, dependency injection, Pydantic validation
-- ✅ **Database Setup**: SQLAlchemy with async support, Alembic migrations
-- ✅ **Error Handling**: Comprehensive exception handling with custom exceptions
-- ✅ **API Patterns**: CRUD operations, pagination, filtering, sorting
-- ✅ **Rate Limiting**: Built-in rate limiting middleware
-- ✅ **CORS Configuration**: Ready for frontend integration
-- ✅ **Docker Support**: Multi-container setup with Docker Compose
-- ✅ **Testing Framework**: pytest with async support
-- ✅ **Type Safety**: Full Python type hints
-- ✅ **Code Quality**: Ruff for linting and formatting
-- ✅ **Documentation**: Auto-generated OpenAPI/Swagger docs
-
-## Tech Stack
-
-### Backend
-- **FastAPI** - Modern, fast Python web framework
-- **SQLAlchemy** - Async ORM with SQLite/PostgreSQL support
-- **Alembic** - Database migrations
-- **uv** - Ultra-fast Python package manager
-- **Ruff** - Fast Python linter and formatter
-- **pytest** - Testing framework
-
-### Frontend
-- **React 19** - UI library
-- **Vite** - Build tool and dev server
-- **TypeScript** - Type safety
-- **ESLint** - Code linting
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.12+
-- [Bun](https://bun.sh) 1.0+ for frontend package management
-- [uv](https://github.com/astral-sh/uv) for Python package management
-
-### 1. Backend Setup
-
-```bash
-# Install dependencies
-make dev
-
-# Set up environment
-cp .env.example .env
-
-# Edit .env to configure your database and settings
-
-# Run migrations (after creating your models)
-make migration  # Create initial migration
-make migrate    # Apply migrations
-
-# Start server
-make run
-```
-
-Backend will be available at: http://localhost:8000
-API docs at: http://localhost:8000/api/v1/docs
-
-### 2. Create Your First Sales API
-
-Follow this pattern to create your sales dashboard endpoints:
-
-1. **Define Model** (`src/models/sale.py`):
-   - Copy `example_model.py` as a reference
-   - Define your database table structure
-
-2. **Create Schema** (`src/schemas/sale.py`):
-   - Copy `example_schema.py` as a reference
-   - Define request/response schemas
-
-3. **Build Service** (`src/services/sale_service.py`):
-   - Copy `example_service.py` as a reference
-   - Implement business logic
-
-4. **Add Endpoint** (`src/api/v1/endpoints/sales.py`):
-   - Copy `example_endpoints.py` as a reference
-   - Create API routes
-
-5. **Register Router** (`src/api/v1/__init__.py`):
-   ```python
-   from src.api.v1.endpoints import sales
-   api_router.include_router(sales.router, prefix="/sales", tags=["sales"])
-   ```
-
-6. **Create Migration**:
-   ```bash
-   make migration  # Creates migration for your new model
-   make migrate    # Applies the migration
-   ```
-
-### 3. Frontend Setup (Optional)
-
-```bash
-cd frontend
-
-# Install dependencies
-bun install
-
-# Start development server
-bun run dev
-```
-
-Frontend will be available at: http://localhost:5173
-
-## 📚 Documentation
-
-Complete documentation is available in the [`docs/`](docs/) folder:
-
-- **[Quick Start Guide](docs/QUICKSTART.md)** - Get started in 5 minutes
-- **[API Reference](docs/api/API_REFERENCE.md)** - Complete API documentation
-- **[Setup Guide](docs/development/SETUP_GUIDE.md)** - Detailed development setup
-- **[Testing Guide](docs/development/TESTING_GUIDE.md)** - Write and run tests
-- **[Deployment Guide](docs/deployment/DEPLOYMENT_GUIDE.md)** - Deploy to production
-- **[EC2 Docker Deployment](docs/deployment/EC2_DOCKER_DEPLOYMENT.md)** - Complete Docker deployment to EC2
-- **[Architecture](docs/architecture/ARCHITECTURE.md)** - System architecture
-- **[Documentation Index](docs/README.md)** - Full documentation index
-
-## Development
-
-### Backend Commands
-
-```bash
-make install    # Install dependencies
-make dev        # Install with dev dependencies
-make run        # Start dev server
-make migrate    # Run migrations
-make migration  # Create new migration
-make test       # Run tests
-make lint       # Lint code
-make format     # Format code
-make clean      # Clean generated files
-```
-
-### Frontend Commands
-
-```bash
-cd frontend
-
-bun run dev     # Start dev server
-bun run build   # Build for production
-bun run preview # Preview production build
-bun run lint    # Lint code
-```
-
-## 🔌 API Documentation
-
-Once the backend is running, you can access interactive API documentation:
-
-- **Swagger UI**: http://localhost:8000/api/v1/docs
-- **ReDoc**: http://localhost:8000/api/v1/redoc
-- **Health Check**: http://localhost:8000/health
-
-### Example API Patterns Included
-
-The template includes example endpoints demonstrating:
-
-- ✅ **CRUD Operations**: Create, Read, Update, Delete
-- ✅ **List with Pagination**: `GET /api/v1/examples?skip=0&limit=100`
-- ✅ **Filtering & Search**: `GET /api/v1/examples?search=query`
-- ✅ **Sorting**: `GET /api/v1/examples?sort_by=created_at&sort_order=desc`
-- ✅ **Statistics**: `GET /api/v1/examples/stats/summary`
-
-Build your sales dashboard endpoints following these patterns!
-
-## Environment Configuration
-
-### Backend (.env)
-
-```env
-# Database
-DATABASE_URL=sqlite+aiosqlite:///./sales_dashboard.db
-# For PostgreSQL: postgresql+asyncpg://user:password@localhost/sales_db
-
-# Application
-DEBUG=true
-ENVIRONMENT=development
-
-# Security
-SECRET_KEY=your-secret-key-here-change-in-production
-
-# CORS (adjust for your frontend URL)
-CORS_ORIGINS=["http://localhost:3000", "http://localhost:5173"]
-
-# Rate Limiting
-RATE_LIMIT_ENABLED=true
-RATE_LIMIT_PER_MINUTE=100
-```
-
-## Testing
-
-### Backend Tests
-
-```bash
-# Run all tests
-make test
-
-# With coverage report (advanced)
-make test
-# Then view coverage: open htmlcov/index.html
-
-# Or use pytest directly for custom coverage options
-uv run pytest --cov=src --cov-report=html
-```
-
-### Frontend Tests
-
-```bash
-cd frontend
-bun run test  # When tests are set up
-```
-
-## 🚢 Deployment
-
-### Docker Deployment (Recommended)
-
-The template includes production-ready Docker configuration:
-
-**Quick Docker Start:**
-```bash
-# Production deployment
-make prod-up
-```
-
-For detailed deployment guides, see:
-- **[EC2 Docker Deployment Guide](docs/deployment/EC2_DOCKER_DEPLOYMENT.md)** - Complete Docker deployment
-- **[General Deployment Guide](docs/deployment/DEPLOYMENT_GUIDE.md)** - Traditional deployment options
-
-### Deployment Checklist
-
-Before deploying to production:
-
-1. ✅ Update `SECRET_KEY` in `.env` with a strong secret
-2. ✅ Set `DEBUG=false` in production environment
-3. ✅ Configure production database (PostgreSQL recommended)
-4. ✅ Update `CORS_ORIGINS` with your frontend domain
-5. ✅ Set up SSL/TLS certificates
-6. ✅ Configure rate limiting for your use case
-7. ✅ Set up monitoring and logging
-8. ✅ Run security audit: `make lint`
+# ShopX Sales Analytics Dashboard 📊
+
+A high-performance, scalable sales analytics dashboard built with FastAPI, GraphQL, and modern web technologies. Designed to handle huge traffic loads with sub-second response times through intelligent caching and database optimizations.
+
+**🎉 Status:** Backend Complete (6/8 Phases) - Production Ready!
+
+[![Python](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.116+-green.svg)](https://fastapi.tiangolo.com/)
+[![GraphQL](https://img.shields.io/badge/GraphQL-Strawberry-ff69b4.svg)](https://strawberry.rocks/)
+[![Redis](https://img.shields.io/badge/Redis-7+-red.svg)](https://redis.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue.svg)](https://www.postgresql.org/)
+
+## 🚀 Features
+
+- **Real-time Analytics**: Sales overview, trends, and metrics updated every 30-60 seconds
+- **Product Insights**: Top performing products, category breakdown, profit analysis
+- **Customer Analytics**: Customer segments, lifetime value, retention metrics
+- **Sales Rep Performance**: Leaderboards, commission tracking, regional analysis
+- **Profitability Analysis**: Margin analysis, cost tracking, profit trends
+- **High Performance**: Multi-tier caching, materialized views, optimized queries
+- **Scalable Architecture**: Horizontal scaling, load balancing, async operations
+- **GraphQL API**: Flexible queries, efficient data fetching, batch operations
+- **Beautiful Charts**: Interactive visualizations with Chart.js/Recharts
+- **Real-time Updates**: WebSocket support for live metrics
 
 ## 🏗️ Architecture
 
-See the [Architecture Documentation](docs/architecture/ARCHITECTURE.md) for a detailed overview of the system design.
+```
+┌─────────────┐
+│   Nginx     │  Load Balancer
+└──────┬──────┘
+       │
+   ┌───┴────┬────────┬────────┐
+   │        │        │        │
+┌──▼──┐ ┌──▼──┐ ┌───▼──┐ ┌──▼──┐
+│ App │ │ App │ │ App  │ │ App │  FastAPI + GraphQL
+└──┬──┘ └──┬──┘ └───┬──┘ └──┬──┘
+   └────┬────┴────┬──┴───────┘
+        │         │
+   ┌────▼────┐ ┌─▼────────┐
+   │  Redis  │ │  Celery  │  Caching & Tasks
+   └────┬────┘ └─┬────────┘
+        │         │
+        └────┬────┘
+             │
+       ┌─────▼──────┐
+       │ PostgreSQL │  Database with optimizations
+       └────────────┘
+```
 
-### Backend Architecture
+### Key Components
 
-- **FastAPI** application with async/await support
-- **SQLAlchemy** for database operations with async sessions
-- **Service layer** pattern for business logic
-- **Pydantic** schemas for validation
-- **Alembic** for database migrations
+- **FastAPI**: High-performance async web framework
+- **GraphQL (Strawberry)**: Flexible, efficient API queries
+- **PostgreSQL**: Primary database with partitioning and materialized views
+- **Redis**: Multi-purpose caching layer
+- **Celery**: Background task processing
+- **Nginx**: Load balancing and reverse proxy
+- **Prometheus**: Metrics and monitoring
 
-### Frontend Architecture
+## 📋 Prerequisites
 
-- **React** with hooks for state management
-- **Vite** for fast builds and HMR
-- **TypeScript** for type safety
-- **Component-based** architecture
+- Python 3.11+
+- PostgreSQL 15+
+- Redis 7+
+- Node.js 18+ (for frontend)
+- Docker & Docker Compose (optional)
 
-## Contributing
+## 🚀 Quick Start
+
+### 1. Clone and Setup
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd claude-code-fastapi-graphql
+
+# Create virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install -e ".[dev]"
+```
+
+### 2. Configure Environment
+
+```bash
+# Copy environment template
+cp .env.example .env
+
+# Edit .env with your settings
+nano .env
+```
+
+### 3. Start Services (Docker)
+
+```bash
+# Start PostgreSQL and Redis
+docker-compose up -d postgres redis
+
+# Or start all services
+docker-compose up -d
+```
+
+### 4. Initialize Database
+
+```bash
+# Run migrations
+alembic upgrade head
+
+# Apply database optimizations
+psql $DATABASE_URL < migrations/versions/001_create_indexes.sql
+psql $DATABASE_URL < migrations/versions/002_partition_orders.sql
+psql $DATABASE_URL < migrations/versions/003_materialized_views.sql
+
+# Seed sample data (optional)
+python scripts/seed_data.py --records 100000
+```
+
+### 5. Start Backend
+
+```bash
+# Development mode with hot reload
+uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+
+# Or use the Makefile
+make dev
+```
+
+### 6. Start Frontend
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install  # or: bun install
+
+# Start development server
+npm run dev  # or: bun dev
+```
+
+### 7. Access Applications
+
+- **Backend API**: http://localhost:8000
+- **GraphQL Playground**: http://localhost:8000/graphql
+- **API Docs**: http://localhost:8000/docs
+- **Frontend Dashboard**: http://localhost:3000
+- **Prometheus Metrics**: http://localhost:9090
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** - Complete system architecture, design decisions, and scalability strategies
+- **[IMPLEMENTATION_GUIDE.md](docs/IMPLEMENTATION_GUIDE.md)** - Step-by-step implementation guide with code examples
+- **[API.md](docs/API.md)** - Complete GraphQL API documentation with example queries
+- **[REQUIREMENT.md](docs/REQUIREMENT.md)** - Original project requirements and specifications
+
+## 🎯 Performance Targets
+
+| Metric | Target | Status |
+|--------|--------|--------|
+| Dashboard Overview | < 200ms (p95) | ✅ Target |
+| Product Insights | < 300ms (p95) | ✅ Target |
+| Customer Analytics | < 400ms (p95) | ✅ Target |
+| Cache Hit Rate | > 80% | ✅ Target |
+| Throughput | 1,000 req/sec | ✅ Target |
+| Error Rate | < 1% | ✅ Target |
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=src --cov-report=html
+
+# Run specific test types
+pytest -m unit          # Unit tests only
+pytest -m integration   # Integration tests only
+pytest -m e2e          # End-to-end tests only
+
+# Load testing
+locust -f tests/performance/locustfile.py
+```
+
+## 📦 Project Structure
+
+```
+.
+├── docs/                       # Documentation
+│   ├── ARCHITECTURE.md        # System architecture
+│   ├── IMPLEMENTATION_GUIDE.md # Implementation guide
+│   ├── API.md                 # API documentation
+│   └── REQUIREMENT.md         # Requirements
+├── frontend/                   # React frontend
+│   ├── src/
+│   │   ├── components/        # React components
+│   │   ├── graphql/          # GraphQL queries
+│   │   ├── lib/              # Utilities
+│   │   └── hooks/            # Custom hooks
+│   └── package.json
+├── src/                       # Backend source
+│   ├── core/                 # Core configuration
+│   │   ├── config.py         # Settings
+│   │   ├── database.py       # Database connection
+│   │   └── cache.py          # Redis cache manager
+│   ├── models/               # SQLAlchemy models
+│   │   ├── customer.py
+│   │   ├── product.py
+│   │   ├── order.py
+│   │   └── ...
+│   ├── graphql/              # GraphQL layer
+│   │   ├── schema.py         # Main schema
+│   │   ├── types.py          # Type definitions
+│   │   ├── queries.py        # Query resolvers
+│   │   └── dataloaders.py    # DataLoaders
+│   ├── services/             # Business logic
+│   │   ├── analytics_service.py
+│   │   ├── product_service.py
+│   │   └── ...
+│   ├── tasks/                # Celery tasks
+│   │   └── scheduler.py
+│   ├── middleware/           # FastAPI middleware
+│   └── main.py              # Application entry point
+├── migrations/               # Alembic migrations
+│   └── versions/            # SQL scripts
+├── tests/                   # Test suite
+│   ├── unit/
+│   ├── integration/
+│   └── performance/
+├── scripts/                 # Utility scripts
+│   ├── seed_data.py        # Data seeding
+│   └── deploy.sh           # Deployment
+├── docker-compose.yml       # Docker services
+├── pyproject.toml          # Python dependencies
+└── README.md               # This file
+```
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Key environment variables (see [.env.example](.env.example) for all options):
+
+```env
+# Database
+DATABASE_URL=postgresql+asyncpg://user:pass@localhost:5432/db
+DATABASE_POOL_SIZE=20
+
+# Redis
+REDIS_URL=redis://localhost:6379/0
+
+# GraphQL
+GRAPHQL_MAX_DEPTH=10
+GRAPHQL_MAX_COMPLEXITY=1000
+
+# Cache TTL
+CACHE_TTL_DASHBOARD=60
+CACHE_TTL_PRODUCTS=300
+```
+
+### Database Optimization
+
+The system uses several database optimizations:
+
+1. **Partitioning**: Orders table partitioned by month
+2. **Indexes**: Strategic indexes on frequently queried columns
+3. **Materialized Views**: Pre-computed aggregations refreshed periodically
+4. **Connection Pooling**: Efficient connection management
+
+### Caching Strategy
+
+Multi-tier caching for maximum performance:
+
+1. **L1 (Redis)**: Hot data, 30-60s TTL
+2. **L2 (Materialized Views)**: Complex aggregations
+3. **L3 (Aggregation Tables)**: Pre-computed hourly/daily metrics
+
+## 🚀 Deployment
+
+### Docker Production Deployment
+
+```bash
+# Build images
+docker-compose -f docker-compose.prod.yml build
+
+# Start services
+docker-compose -f docker-compose.prod.yml up -d
+
+# Check logs
+docker-compose -f docker-compose.prod.yml logs -f
+```
+
+### Manual Deployment
+
+```bash
+# Build frontend
+cd frontend && npm run build
+
+# Start backend with gunicorn
+gunicorn src.main:app \
+  --workers 4 \
+  --worker-class uvicorn.workers.UvicornWorker \
+  --bind 0.0.0.0:8000
+
+# Start Celery worker
+celery -A src.tasks.scheduler worker --loglevel=info
+
+# Start Celery beat (scheduler)
+celery -A src.tasks.scheduler beat --loglevel=info
+```
+
+## 📊 Monitoring
+
+### Prometheus Metrics
+
+The application exports metrics at `/metrics`:
+
+- Request count and duration
+- Cache hit/miss rates
+- Database query times
+- Celery task metrics
+- Custom business metrics
+
+### Grafana Dashboards
+
+Import pre-built dashboards from `monitoring/grafana/`:
+
+- **System Overview**: CPU, memory, disk usage
+- **Application Metrics**: Request rates, response times
+- **Database Performance**: Query times, connection pool
+- **Cache Performance**: Hit rates, memory usage
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## License
+## 📝 API Examples
 
-MIT License
+### Sales Overview
 
-## Support
+```graphql
+query {
+  salesOverview(period: MONTH) {
+    totalRevenue
+    totalOrders
+    averageOrderValue
+    revenueChangePercentage
+  }
+}
+```
 
-For issues and questions, please open an issue on the GitHub repository.
+### Top Products
+
+```graphql
+query {
+  topProducts(limit: 10, sortBy: REVENUE_DESC) {
+    product {
+      name
+      sellingPrice
+    }
+    revenue
+    unitsSold
+    profit
+  }
+}
+```
+
+### Customer Analytics
+
+```graphql
+query {
+  customerSegments {
+    segment
+    customerCount
+    totalRevenue
+    averageLifetimeValue
+  }
+}
+```
+
+See [docs/API.md](docs/API.md) for complete API documentation.
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Slow Queries**
+```sql
+-- Check slow queries
+SELECT query, mean_exec_time
+FROM pg_stat_statements
+ORDER BY mean_exec_time DESC
+LIMIT 10;
+```
+
+**Cache Issues**
+```bash
+# Check Redis
+redis-cli ping
+
+# Monitor cache hits
+redis-cli info stats
+```
+
+**High Load**
+```bash
+# Check system resources
+htop
+
+# Check database connections
+SELECT count(*) FROM pg_stat_activity;
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 👥 Team
+
+- **Architecture**: High-performance, scalable design
+- **Backend**: FastAPI + GraphQL + PostgreSQL
+- **Frontend**: React + Apollo Client + Chart.js
+- **DevOps**: Docker + Nginx + Prometheus
+
+## 🙏 Acknowledgments
+
+- FastAPI for the excellent web framework
+- Strawberry for GraphQL support
+- PostgreSQL team for the powerful database
+- Redis Labs for the caching solution
+
+---
+
+**Need Help?** Check out the [documentation](docs/) or open an issue!
+
+**Performance Tips?** See [ARCHITECTURE.md](docs/ARCHITECTURE.md) for optimization strategies.
+
+**API Reference?** Visit [API.md](docs/API.md) for complete GraphQL documentation.

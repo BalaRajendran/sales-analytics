@@ -14,8 +14,8 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 WORKDIR /app
 
-# Copy only dependency specification
-COPY pyproject.toml ./
+# Copy dependency specification and README (required by pyproject.toml)
+COPY pyproject.toml README.md ./
 
 # Install Python dependencies using uv
 RUN uv pip install --system --no-cache-dir -e .
@@ -44,7 +44,7 @@ COPY --chown=appuser:appuser src/ ./src/
 COPY --chown=appuser:appuser alembic.ini ./
 COPY --chown=appuser:appuser migrations/ ./migrations/
 COPY --chown=appuser:appuser gunicorn.conf.py ./
-COPY --chown=appuser:appuser pyproject.toml ./
+COPY --chown=appuser:appuser pyproject.toml README.md ./
 
 # Create necessary directories
 RUN mkdir -p /app/logs && chown -R appuser:appuser /app
